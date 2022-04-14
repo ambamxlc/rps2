@@ -1,66 +1,66 @@
-const hands = ["rock", "paper", "scissors"];
+const Hand = ["rock", "paper", "scissors"];
 
-let gethands = ("rock", "paper", "scissors") => {
-    return hands[parseInt(Math.random()*10)%3]
+const PlayerOne = { Name: "Jimin", getHandmethod: getHand };
+const PlayerTwo = { Name: "Namjoon", getHandmethod: getHand };
+
+function getHand() {
+  return Hand[parseInt(Math.random() * 10) % 3];
+}
+console.log(getHand);
+
+function playRound(PlayerOne, PlayerTwo) {
+  let player1 = PlayerOne.getHandmethod();
+  let player2 = PlayerTwo.getHandmethod();
+
+  console.log(PlayerOne.Name, player1);
+  console.log(PlayerTwo.Name, player2);
+
+  if (player1 === player2) {
+    console.log("it's a tie");
+    return null;
+  } else if (player1 === "rock" && player2 === "scissors") {
+    console.log("Rock wins!");
+    return PlayerOne;
+  } else if (player1 === "scissors" && player2 === "paper") {
+    console.log("Scissor wins!");
+    return PlayerOne;
+  } else if (player1 === "paper" && player2 === "rock") {
+    console.log("Paper wins!");
+    return PlayerOne;
+  } else if (player1 === "scissors" && player2 === "rock") {
+    console.log("Scissors wins!");
+    return PlayerTwo;
+  } else if (player1 === "paper" && player2 === "scissors") {
+    console.log("Paper wins");
+    return PlayerTwo;
+  } else if (player1 === "rock" && player2 === "paper") {
+    console.log("Rock wins!");
+    return PlayerTwo;
+  }
+}
+const playUntill = 5;
+let player1Wins = 0;
+let player2Wins = 0;
+
+function playGame(PlayerOne, PlayerTwo, playUntill = 5) {
+  let game = playRound(PlayerOne, PlayerTwo);
+  if (game === PlayerOne) {
+    player1Wins += 1;
+    console.log("Jimin:" + player1Wins);
+    console.log("Namjoon:" + player2Wins);
+  } else if (game == PlayerTwo) {
+    player2Wins += 1;
+    console.log("Jimin:" + player1Wins);
+    console.log("Namjoon:" + player2Wins);
+  }
+  if (player1Wins == playUntill || player2Wins == playUntill) {
+    return [game];
+  }
+  return playGame(PlayerOne, PlayerTwo);
 }
 
-let player = {
-  name: "Jimin",
-  gethands: getHands
-}
+console.log(playGame(PlayerOne, PlayerTwo, playUntill));
 
-let player2 = {
-  name: "RM",
-  getHands: getHands
-}
-
-const winConditions = {
-    rock: 'scissors',
-    paper: 'rock',
-    scissors: 'paper'
-}
-
-let playRound = (player1, player2) => {
-
-    let hand1 = player1.getHands();
-    let hand2 = player2.getHands();
-
-    console.log(p1.name, 'threw', p1Hand);
-    console.log(p2.name, 'threw', p2Hand);
-
-    if (player1Hand === player2Hand) {
-         console.log("tie");
-         return null;
-    }
-    else if (winConditions[p1Hand] === p2Hand) {
-        console.log(player1.name, 'wins!');
-        return p1;
-    }
-
-    else if (winConditions[p1Hand] === p2Hand){
-    }
-
-    else {
-        console.log(p2.name, 'wins!');
-        return p2;
-    }
-let playqGame = (player1, player2, playUntil) => {
-
-    let playerWins = 0;
-    let playerWins = 0;
-
-while (player1Wins < playUntil && player2Wins < playUntil) {
-
-   if (playRound(player1, player2)) {
-
-} else if (playRound(player1, player2) === player1) {
-   }
-   else {
-       player2Wins++;
-   }
-
-if (playerWins === playUntil) {
-    return player1;
-} else {
-    return player2
-}
+module.exports.Hand = Hand;
+module.exports.playUntill = playUntill;
+module.exports.playRound = playRound;

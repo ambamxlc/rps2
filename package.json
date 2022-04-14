@@ -1,0 +1,23 @@
+{
+  "name": "rps2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rps2.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ambamxlc/rps2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ambamxlc/rps2/issues"
+  },
+  "homepage": "https://github.com/ambamxlc/rps2#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
